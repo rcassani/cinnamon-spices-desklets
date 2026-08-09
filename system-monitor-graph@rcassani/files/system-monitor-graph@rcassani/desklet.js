@@ -18,6 +18,8 @@ const KIB_TO_B = 1024;      // 1 KiB = 1,024 B
 
 const CPU_TEMP_MIN =  20;    // Minimum CPU temperature
 const CPU_TEMP_MAX = 100;    // Maximum CPU temperature
+const GPU_TEMP_MIN =  20;    // Minimum GPU temperature
+const GPU_TEMP_MAX = 100;    // Maximum GPU temperature
 const CPU_FANSPEED_MAX = 4000; // CPU fan graph full-scale speed
 const CPU_FAN_RETRY_MIN = 5;   // Initial retry delay in seconds
 const CPU_FAN_RETRY_MAX = 300; // Maximum retry delay in seconds
@@ -429,7 +431,8 @@ SystemMonitorGraph.prototype = {
                               this.get_amdgpu_gpu_temperature(this.gpu_amd_temperature_file);
                               break;
                       }
-                      value = 1.0 * (this.gpu_temperature - CPU_TEMP_MIN) / (CPU_TEMP_MAX - CPU_TEMP_MIN);
+                      // scale GPU temperature based on [GPU_TEMP_MIN, GPU_TEMP_MAX]
+                      value = 1.0 * (this.gpu_temperature - GPU_TEMP_MIN) / (GPU_TEMP_MAX - GPU_TEMP_MIN);
                       value = value < 0 ? 0 : value > 1 ? 1 : value;
                       text1 = _("GPU Temperature");
                       if (this.temperature_units_gpu == "C") {
