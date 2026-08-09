@@ -111,6 +111,7 @@ SystemMonitorGraph.prototype = {
         this.settings.bindProperty(Settings.BindingDirection.IN, "data-prefix-gpumem", "data_prefix_gpumem", this.on_setting_changed);
         this.settings.bindProperty(Settings.BindingDirection.IN, "data-prefix-network", "data_prefix_network", this.on_setting_changed);
         this.settings.bindProperty(Settings.BindingDirection.IN, "network-interface", "network_interface", this.on_setting_changed);
+        this.settings.bindProperty(Settings.BindingDirection.IN, "network-label", "network_label", this.on_setting_changed);
         this.settings.bindProperty(Settings.BindingDirection.IN, "battery-name", "battery_name", this.on_setting_changed);
         this.settings.bindProperty(Settings.BindingDirection.IN, "filesystem", "filesystem", this.on_setting_changed);
         this.settings.bindProperty(Settings.BindingDirection.IN, "filesystem-label", "filesystem_label", this.on_setting_changed);
@@ -448,8 +449,15 @@ SystemMonitorGraph.prototype = {
               this.get_network_values();
               // For network, we don't use the single 'value' variable as we have dual lines
               value = 0; // Not used for network type
-              text1 = _("Network");
-              
+              // Network label
+              text1 = this.network_label;
+              if (text1 == "") {
+                  if (this.network_interface.trim()  == "") {
+                      text1 = _("Network");
+                  } else {
+                      text1 = this.network_interface.trim();
+                  }
+              }
               // Format speeds with appropriate units
               let down_speed_formatted = this.format_network_speed(this.net_down_speed);
               let up_speed_formatted = this.format_network_speed(this.net_up_speed);

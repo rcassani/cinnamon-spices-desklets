@@ -98,6 +98,13 @@
         "tooltip": "Leave empty to monitor all interfaces combined. Examples: eth0, wlan0, enp0s3",
         "dependency": "type=network"
     },
+    "network-label": {
+        "type": "entry",
+        "default": "",
+        "description": "Network label",
+        "tooltip": "Empty uses the network interface name or 'Network' if monitoring all interfaces.",
+        "dependency": "type=network"
+    },
     "battery-name": {
         "type": "entry",
         "default": "BAT0",
