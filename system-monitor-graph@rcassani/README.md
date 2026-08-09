@@ -65,10 +65,10 @@ CPU fan speed history while the fan is running and stopped.
 </p>
 
 ## TODO
-- [x] Add network
-- [x] Battery levels for main battery (laptop)
-- [x] CPU and GPU temperatures
-- [ ] Battery levels for main battery (laptop)
+- [x] Add network [PR #1511](https://github.com/linuxmint/cinnamon-spices-desklets/pull/1511)
+- [x] Battery levels for main battery (laptop) [PR #1766](https://github.com/linuxmint/cinnamon-spices-desklets/pull/1766)
+- [x] CPU and GPU temperatures [PR #1768](https://github.com/linuxmint/cinnamon-spices-desklets/pull/1768)
+- [x] CPU fan speed and status [PR #1868](https://github.com/linuxmint/cinnamon-spices-desklets/pull/1868)
 
 ### Resources
 This is my first Desklet and the first time using JavaScript. Below, some resources that I used for the development of this Desklet.
